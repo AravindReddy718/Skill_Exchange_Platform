@@ -2,6 +2,11 @@
 import express from "express";
 import cors from "cors";
 import authRoutes from "./modules/auth/auth.routes.js";
+import adminVerificationsRoutes from "./modules/admin/verifications/verifications.routes.js";
+import adminSkillsRoutes from "./modules/admin/skills/skills.routes.js";
+import adminExchangesRoutes from "./modules/admin/exchanges/exchanges.routes.js";
+import adminUsersRoutes from "./modules/admin/users/users.routes.js";
+import adminOverviewRoutes from "./modules/admin/overview/overview.routes.js";
 import errorMiddleware from "./middleware/errorMiddleware.js";
 import profileRoutes from "./modules/member/profile/profile.routes.js";
 import discoveryRoutes from "./modules/member/discovery/discovery.routes.js";
@@ -31,6 +36,12 @@ app.use("/api/member/discovery", discoveryRoutes);
 
 // Member exchange routes
 app.use("/api/member/exchanges", exchangeRoutes);
+// Admin routes
+app.use("/api/admin/verifications", adminVerificationsRoutes);
+app.use("/api/admin/skills", adminSkillsRoutes);
+app.use("/api/admin/exchanges", adminExchangesRoutes);
+app.use("/api/admin/users", adminUsersRoutes);
+app.use("/api/admin/overview", adminOverviewRoutes);
 
 // Centralized error handling (must be last)
 app.use(errorMiddleware);
