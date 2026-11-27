@@ -2,6 +2,7 @@
 import express from "express";
 import cors from "cors";
 import authRoutes from "./modules/auth/auth.routes.js";
+import adminSkillsRoutes from "./modules/admin/skills/skills.routes.js";
 import adminExchangesRoutes from "./modules/admin/exchanges/exchanges.routes.js";
 import adminUsersRoutes from "./modules/admin/users/users.routes.js";
 import adminOverviewRoutes from "./modules/admin/overview/overview.routes.js";
@@ -24,6 +25,7 @@ app.get("/", (req, res) => {
 app.use("/api/auth", authRoutes);
 
 // Admin routes
+app.use("/api/admin/skills", adminSkillsRoutes);
 app.use("/api/admin/exchanges", adminExchangesRoutes);
 app.use("/api/admin/users", adminUsersRoutes);
 app.use("/api/admin/overview", adminOverviewRoutes);
