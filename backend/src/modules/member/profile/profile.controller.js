@@ -3,6 +3,7 @@ import {
   getMyProfile,
   updateMyProfile,
   updateMySkills,
+  getAvailableSkills,
 } from "./profile.service.js";
 
 export const getProfile = async (req, res, next) => {
@@ -47,6 +48,20 @@ export const updateSkills = async (req, res, next) => {
       success: true,
       message: "Skills updated successfully",
       profile,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const getAvailableSkillsController = async (req, res, next) => {
+  try {
+    const skills = await getAvailableSkills();
+
+    res.status(200).json({
+      success: true,
+      count: skills.length,
+      skills,
     });
   } catch (error) {
     next(error);

@@ -68,8 +68,41 @@ const userSchema = new mongoose.Schema(
     ],
 
     availability: {
-      type: String,
-      default: "",
+      days: [
+        {
+          day: {
+            type: String,
+            enum: [
+              "monday",
+              "tuesday",
+              "wednesday",
+              "thursday",
+              "friday",
+              "saturday",
+              "sunday",
+            ],
+            required: true,
+          },
+          slots: [
+            {
+              start: {
+                type: String,
+                required: true,
+                match: /^([01]\d|2[0-3]):[0-5]\d$/,
+              },
+              end: {
+                type: String,
+                required: true,
+                match: /^([01]\d|2[0-3]):[0-5]\d$/,
+              },
+            },
+          ],
+        },
+      ],
+      timezone: {
+        type: String,
+        default: "Asia/Kolkata",
+      },
     },
 
     isVerified: {

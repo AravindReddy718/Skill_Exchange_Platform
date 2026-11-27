@@ -7,6 +7,7 @@ import {
   getProfile,
   updateProfile,
   updateSkills,
+  getAvailableSkillsController,
 } from "./profile.controller.js";
 
 const router = express.Router();
@@ -18,6 +19,9 @@ router.use(roleMiddleware("member"));
 // Profile endpoints
 router.get("/", getProfile);
 router.put("/", updateProfile);
+
+// Skills endpoints
+router.get("/skills/available", getAvailableSkillsController);
 router.put("/skills", updateSkills);
 
 export default router;
