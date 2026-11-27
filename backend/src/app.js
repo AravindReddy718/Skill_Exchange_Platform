@@ -2,6 +2,7 @@
 import express from "express";
 import cors from "cors";
 import authRoutes from "./modules/auth/auth.routes.js";
+import adminOverviewRoutes from "./modules/admin/overview/overview.routes.js";
 import errorMiddleware from "./middleware/errorMiddleware.js";
 
 const app = express();
@@ -19,6 +20,9 @@ app.get("/", (req, res) => {
 
 // Authentication routes
 app.use("/api/auth", authRoutes);
+
+// Admin routes
+app.use("/api/admin/overview", adminOverviewRoutes);
 
 // Centralized error handling (must be last)
 app.use(errorMiddleware);
