@@ -3,6 +3,7 @@ import express from "express";
 import cors from "cors";
 import authRoutes from "./modules/auth/auth.routes.js";
 import errorMiddleware from "./middleware/errorMiddleware.js";
+import profileRoutes from "./modules/member/profile/profile.routes.js";
 
 const app = express();
 
@@ -19,6 +20,9 @@ app.get("/", (req, res) => {
 
 // Authentication routes
 app.use("/api/auth", authRoutes);
+
+// Member profile routes
+app.use("/api/member/profile", profileRoutes);
 
 // Centralized error handling (must be last)
 app.use(errorMiddleware);
