@@ -8,6 +8,9 @@ import adminExchangesRoutes from "./modules/admin/exchanges/exchanges.routes.js"
 import adminUsersRoutes from "./modules/admin/users/users.routes.js";
 import adminOverviewRoutes from "./modules/admin/overview/overview.routes.js";
 import errorMiddleware from "./middleware/errorMiddleware.js";
+import profileRoutes from "./modules/member/profile/profile.routes.js";
+import discoveryRoutes from "./modules/member/discovery/discovery.routes.js";
+import exchangeRoutes from "./modules/member/exchanges/exchanges.routes.js";
 
 const app = express();
 
@@ -25,6 +28,14 @@ app.get("/", (req, res) => {
 // Authentication routes
 app.use("/api/auth", authRoutes);
 
+// Member profile routes
+app.use("/api/member/profile", profileRoutes);
+
+// Member discovery routes
+app.use("/api/member/discovery", discoveryRoutes);
+
+// Member exchange routes
+app.use("/api/member/exchanges", exchangeRoutes);
 // Admin routes
 app.use("/api/admin/verifications", adminVerificationsRoutes);
 app.use("/api/admin/skills", adminSkillsRoutes);
